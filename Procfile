@@ -1,1 +1,1 @@
-web gunicorn appTest:app
+web gunicorn AIp12x:app
