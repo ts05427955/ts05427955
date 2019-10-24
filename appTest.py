@@ -1,3 +1,6 @@
+# AIp12a.py: AI practices - 12 > program a: a test program for gitHub and Heroku
+# Jia-Sheng Heh, 10/21/2019, revised from AIp11c.py
+
 from flask import Flask
 app=Flask(__name__)  # __name__ 代表目前執行的模組
 
