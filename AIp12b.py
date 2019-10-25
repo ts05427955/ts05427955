@@ -51,39 +51,39 @@ def initialY(NN):   #-- generate all possible solutions
     YS = list()
     for ind in np.arange(YY.shape[0]): YS.append(set(Y[ind]))
     return YY,YS
-# def tableY(YY):     #-- tabulate YY to Ytable/Ydf (NO LONGER USED)
-#     Ytable = np.zeros((4,10),dtype=np.int)
-#     Ytable.shape
-#     for k in np.arange(4):
-#         for j in np.arange(10):
-#             Ytable[k,j] = np.sum(YY[:,k]==j)
-#     Ytable
-#     Ydf = pd.DataFrame(Ytable);   Ydf
-#     return Ytable, Ydf
-# def computeAB(X1,YY1,YS1):  #-- compute nA,nB
-#     ### (4*) form X array/sets (X-->XX,XS) #####
-#     XX1 = np.array(list(X1)*YY1.shape[0]).reshape(YY1.shape[0],4)
-#     XS1 = set(X1)
-#     ### (5*) calculate (nA,nB) outcomes
-#     nA1 = np.sum(XX1==YY1, axis=1)   #-- np.sum(nA==1): counts for 1A2B
-#     nB1 = np.zeros(YY1.shape[0],dtype=np.int)
-#     for ind in np.arange(YY1.shape[0]): nB1[ind] = 4 - len(XS1-YS1[ind]) - nA1[ind]
-#     return nA1,nB1
-# def updateY(YY1,YS1,IND1):  #-- update YY1,YS1
-#     ### (6*) iterate YY and YS
-#     YY2 = YY1[IND1]   
-#     YS2 = [YS1[i] for i in IND1]
-#     return YY2,YS2
-# def centerY(ZZ):            #-- center of ZZ array
-#     Zmean0 = ZZ.mean(axis=0);                 # print("Zmean0 = ",Zmean0)
-#     Zmean = np.array(list(Zmean0)*ZZ.shape[0]).reshape(ZZ.shape[0],4);   # print("Zmean = ",Zmean)
-#     D = ((ZZ-Zmean)*(ZZ-Zmean)).sum(axis=1);  # print("D = ",D)
-#     return ZZ[D.argmin()]
-# def judgeX(X,Xactual):      #-- judge (nA,nB) of X
-#     nAX = np.sum(X==Xactual);                     
-#     nBX = 4 - len(set(X) - set(Xactual)) - nAX;   
-#     # print("nAX = ",nAX,", nBX = ",nBX)
-#     return nAX,nBX
+def tableY(YY):     #-- tabulate YY to Ytable/Ydf (NO LONGER USED)
+    Ytable = np.zeros((4,10),dtype=np.int)
+    Ytable.shape
+    for k in np.arange(4):
+        for j in np.arange(10):
+            Ytable[k,j] = np.sum(YY[:,k]==j)
+    Ytable
+    Ydf = pd.DataFrame(Ytable);   Ydf
+    return Ytable, Ydf
+def computeAB(X1,YY1,YS1):  #-- compute nA,nB
+    ### (4*) form X array/sets (X-->XX,XS) #####
+    XX1 = np.array(list(X1)*YY1.shape[0]).reshape(YY1.shape[0],4)
+    XS1 = set(X1)
+    ### (5*) calculate (nA,nB) outcomes
+    nA1 = np.sum(XX1==YY1, axis=1)   #-- np.sum(nA==1): counts for 1A2B
+    nB1 = np.zeros(YY1.shape[0],dtype=np.int)
+    for ind in np.arange(YY1.shape[0]): nB1[ind] = 4 - len(XS1-YS1[ind]) - nA1[ind]
+    return nA1,nB1
+def updateY(YY1,YS1,IND1):  #-- update YY1,YS1
+    ### (6*) iterate YY and YS
+    YY2 = YY1[IND1]   
+    YS2 = [YS1[i] for i in IND1]
+    return YY2,YS2
+def centerY(ZZ):            #-- center of ZZ array
+    Zmean0 = ZZ.mean(axis=0);                 # print("Zmean0 = ",Zmean0)
+    Zmean = np.array(list(Zmean0)*ZZ.shape[0]).reshape(ZZ.shape[0],4);   # print("Zmean = ",Zmean)
+    D = ((ZZ-Zmean)*(ZZ-Zmean)).sum(axis=1);  # print("D = ",D)
+    return ZZ[D.argmin()]
+def judgeX(X,Xactual):      #-- judge (nA,nB) of X
+    nAX = np.sum(X==Xactual);                     
+    nBX = 4 - len(set(X) - set(Xactual)) - nAX;   
+    # print("nAX = ",nAX,", nBX = ",nBX)
+    return nAX,nBX
 
 ###=== (3.2) 設定對話(kk,openF,answerF) ===###
 # Xactual = np.array([3,1,4,5])   
