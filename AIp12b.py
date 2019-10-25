@@ -104,13 +104,13 @@ def index():
     # return "index_test OK!" 
     ## aF1 = "<form method='get' action=" + url_for('interact') + ">"
     # aT = "<p><input type='text' name='dd' size='6' background-color='888888'/></p>"
-    # aB = "<button type='submit'>送出</button>"
-    # HTML = "<html><body>" + openF + aT + aB + "</body></html>"
+    aB = "<button type='submit'>送出</button>"
+    HTML = "<html><body>" + openF + aB + "</body></html>"
 
-    print("Hello World")
-    sys.stdout.flush()
+    # print("Hello World")
+    # sys.stdout.flush()
 
-    HTML = "<html><body>" + openF + "<p><input type='text' name='dd' size='6' background-color='888888'/></p>" + "<button type='submit'>送出</button>" + "</body></html>"
+    # HTML = "<html><body>" + openF + "<p><input type='text' name='dd' size='6' background-color='888888'/></p>" + "<button type='submit'>送出</button>" + "</body></html>"
     return HTML
     ## "<html><body>" + openF + "<p><input type='text' name='dd' size='6' background-color='888888'/></p>" + "<button type='submit'>送出</button>" + "</body></html>"
 #    "<form method='get' action=" + url_for('interact') + ">" +
