@@ -1,1 +1,1 @@
-web gunicorn AIp12a:app --log-level=debug
+web: gunicorn AIp12a:app --log-level=debug
