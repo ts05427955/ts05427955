@@ -41,6 +41,7 @@
 
 ###=== (3.1) 載入軟件包與自製函數(initialY,computeAB,updateY,centerY,judgeX) ===###
 from flask import Flask, request, url_for, redirect, render_template, Markup
+import os
 import numpy as np
 import pandas as pd
 def initialY(NN):   #-- generate all possible solutions
@@ -105,6 +106,8 @@ def index():
     # aT = "<p><input type='text' name='dd' size='6' background-color='888888'/></p>"
     # aB = "<button type='submit'>送出</button>"
     # HTML = "<html><body>" + openF + aT + aB + "</body></html>"
+    print("Hello World")
+    sys.stdout.flush()
     HTML = "<html><body>" + openF + "<p><input type='text' name='dd' size='6' background-color='888888'/></p>" + "<button type='submit'>送出</button>" + "</body></html>"
     return HTML
     ## "<html><body>" + openF + "<p><input type='text' name='dd' size='6' background-color='888888'/></p>" + "<button type='submit'>送出</button>" + "</body></html>"
