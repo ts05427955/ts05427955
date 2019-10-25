@@ -41,8 +41,8 @@
 
 ###=== (3.1) 載入軟件包與自製函數(initialY,computeAB,updateY,centerY,judgeX) ===###
 from flask import Flask, request, url_for, redirect, render_template, Markup
-import numpy as np
-import pandas as pd
+# import numpy as np
+# import pandas as pd
 # def initialY(NN):   #-- generate all possible solutions
 #     NN10 = 10**NN
 #     y = set(np.arange(10))
