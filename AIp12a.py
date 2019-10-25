@@ -1,19 +1,19 @@
 # AIp12a.py: AI practices - 12 > program a: a test program for gitHub and Heroku
 # Jia-Sheng Heh, 10/21/2019, revised from AIp11c.py
 
-from flask import Flask
-app=Flask(__name__)  # __name__ 代表目前執行的模組
+# from flask import Flask
+# app=Flask(__name__)  # __name__ 代表目前執行的模組
 
-@app.route("/")  # 函式的裝飾(Decorator): 以函式為基礎，提供附加的功能
-def home():
-    return "Hello Flask 2"
+# @app.route("/")  # 函式的裝飾(Decorator): 以函式為基礎，提供附加的功能
+# def home():
+#     return "Hello Flask 2"
 
-@app.route("/test")  # 代表我們要處理的網站路徑
-def test():
-    return "This is Test"
+# @app.route("/test")  # 代表我們要處理的網站路徑
+# def test():
+#     return "This is Test"
 
-if __name__=="__main__":  # 如果以上程式執行
-    app.run()   # 立刻啟動伺服器
+# if __name__=="__main__":  # 如果以上程式執行
+#     app.run()   # 立刻啟動伺服器
 
 #################### AIp12a.py ####################
 
@@ -95,16 +95,20 @@ if __name__=="__main__":  # 如果以上程式執行
 #    web gunicorn app:app
 # 建立本程式碼 (4) AIp12a.py:  (revised from AIp11c.py)
 
-# from flask import Flask
-# app = Flask(__name__)    # __name__ 代表目前執行的模組
-# @app.route("/")      #== 函式的裝飾(Decorator): 以函式為基礎，提供附加的功能
-# def home():
-#     return "Hello Flask 2"
-# @app.route("/test")  #== 代表我們要處理的網站路徑
-# def test():
-#     return "This is a Test"
-# if __name__=="__main__":  # 如果以上程式執行
-#     app.run()   # 立刻啟動伺服器
+from flask import Flask
+
+app = Flask(__name__)    # __name__ 代表目前執行的模組
+
+@app.route("/")      #== 函式的裝飾(Decorator): 以函式為基礎，提供附加的功能
+def home():
+    return "Hello Flask 2"
+
+@app.route("/test")  #== 代表我們要處理的網站路徑
+def test():
+    return "This is a Test"
+
+if __name__=="__main__":  # 如果以上程式執行
+    app.run()   # 立刻啟動伺服器
 
 ###=== (3.2) 將程式部署到Heroku App,並測試 ===###  
 # $ heroku login              // 登入 Heroku
