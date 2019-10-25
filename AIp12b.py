@@ -50,16 +50,16 @@
 
 ###=== (4.1) 載入軟件包與自製函數(initialY,computeAB,updateY,centerY,judgeX) ===###
 from flask import Flask, request, url_for, redirect, render_template, Markup
-# import numpy as np
-# import pandas as pd
-# def initialY(NN):   #-- generate all possible solutions
-#     NN10 = 10**NN
-#     y = set(np.arange(10))
-#     Y = [(y1,y2,y3,y4) for y1 in y for y2 in y-{y1} for y3 in y-{y1,y2} for y4 in y-{y1,y2,y3}]
-#     YY = np.array(Y)
-#     YS = list()
-#     for ind in np.arange(YY.shape[0]): YS.append(set(Y[ind]))
-#     return YY,YS
+import numpy as np
+import pandas as pd
+def initialY(NN):   #-- generate all possible solutions
+    NN10 = 10**NN
+    y = set(np.arange(10))
+    Y = [(y1,y2,y3,y4) for y1 in y for y2 in y-{y1} for y3 in y-{y1,y2} for y4 in y-{y1,y2,y3}]
+    YY = np.array(Y)
+    YS = list()
+    for ind in np.arange(YY.shape[0]): YS.append(set(Y[ind]))
+    return YY,YS
 # def tableY(YY):     #-- tabulate YY to Ytable/Ydf (NO LONGER USED)
 #     Ytable = np.zeros((4,10),dtype=np.int)
 #     Ytable.shape
