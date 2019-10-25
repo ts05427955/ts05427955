@@ -99,51 +99,52 @@ app = Flask(__name__)
 ###=== (3.3) 會話啟始(kk,X-->openF-->) ===###
 @app.route("/")                   
 def index():
-    global openF 
-    return render_template('conversationDD.html', sayF=Markup(openF))
+    global openF
+    return "index_test OK!" 
+    # return render_template('conversationDD.html', sayF=Markup(openF))
 
 ###=== (3.4) 會話互動(interaction: Questioning-Answering)) ===###
-@app.route("/interact")           
-def interact():
-    global kk, X, openF, answerF              
-    ##== (8.4A) Questioning: 互動時取得詢問值(query d1/,,/d4-->Y-->nA/nB) ==##
-    dd = request.values['dd'];
-    Xactual = np.array(list(dd)).astype(np.int)
-    print("Xactual =",Xactual)
-    ##== (8.4B) 產生所有可能解 (YY/YS) 與 確定題目 (Xactual) ==##
-    NN = 4;   
-    YY,YS = initialY(NN);   print("YY.shape = ",YY.shape)
-    print("YY[0:5] = ",YY[0],YY[1],YY[2],YY[3],YY[4])   
-    ##== (8.4C) 猜測迴圈 (X: YY/YS-->YY1/YS1) ==##
-    while ((YY.shape[0]>1) & (kk<8)):
-        kk = kk+1
-        if (kk==1):    X = np.array([3,1,2,5])
-        elif (kk==2):  X = np.array([4,7,9,8])
-        else:          X = centerY(YY)
-        nAX,nBX = judgeX(Xactual,X)
-        print("\n###### >> kk = ",kk,": 猜測 X = ",X,", nAX = ",nAX,", nBX = ",nBX,"######")  
-        answerF = answerF + "<p> 第 "+str(kk)+" 次猜測: X = "+str(X)+", 可以得到 "+str(nAX)+"A"+str(nBX)+"B </p>"
-        # Ytable,Ydf = tableY(YY);        print("Ydf = \n",Ydf)
-        nA,nB = computeAB(X,YY,YS);     print("nA[0:5] = ",nA[0:5],", nB[0:5] = ",nB[0:5])
-        IND = np.where((nA==nAX) & (nB==nBX))[0];   print("len(IND) = ",len(IND),", IND[0:6] = ",IND[0:6])   
-        YY1,YS1 = updateY(YY,YS,IND);   print("YY1[0:3] = ", YY1[0:3] )
-        YY = YY1;   YS = YS1
-    ##== (8.4D) 會話結語(closing: open/answerF-->convF-->closing say) ==##    
-    print("\n>> answerF = ",answerF)    
-    print("\n>> The Result YY = ",YY)    
-    # return redirect(url_for("closing",convF=answerF,answer=str(YY)))
-    return redirect(url_for("closing",answer=str(YY)))
-    # answerF = answerF + "最後答案是 X ＝ " + str(YY)
-    # return "<html><body>" + answerF + "</body></html>"
+# @app.route("/interact")           
+# def interact():
+#     global kk, X, openF, answerF              
+#     ##== (8.4A) Questioning: 互動時取得詢問值(query d1/,,/d4-->Y-->nA/nB) ==##
+#     dd = request.values['dd'];
+#     Xactual = np.array(list(dd)).astype(np.int)
+#     print("Xactual =",Xactual)
+#     ##== (8.4B) 產生所有可能解 (YY/YS) 與 確定題目 (Xactual) ==##
+#     NN = 4;   
+#     YY,YS = initialY(NN);   print("YY.shape = ",YY.shape)
+#     print("YY[0:5] = ",YY[0],YY[1],YY[2],YY[3],YY[4])   
+#     ##== (8.4C) 猜測迴圈 (X: YY/YS-->YY1/YS1) ==##
+#     while ((YY.shape[0]>1) & (kk<8)):
+#         kk = kk+1
+#         if (kk==1):    X = np.array([3,1,2,5])
+#         elif (kk==2):  X = np.array([4,7,9,8])
+#         else:          X = centerY(YY)
+#         nAX,nBX = judgeX(Xactual,X)
+#         print("\n###### >> kk = ",kk,": 猜測 X = ",X,", nAX = ",nAX,", nBX = ",nBX,"######")  
+#         answerF = answerF + "<p> 第 "+str(kk)+" 次猜測: X = "+str(X)+", 可以得到 "+str(nAX)+"A"+str(nBX)+"B </p>"
+#         # Ytable,Ydf = tableY(YY);        print("Ydf = \n",Ydf)
+#         nA,nB = computeAB(X,YY,YS);     print("nA[0:5] = ",nA[0:5],", nB[0:5] = ",nB[0:5])
+#         IND = np.where((nA==nAX) & (nB==nBX))[0];   print("len(IND) = ",len(IND),", IND[0:6] = ",IND[0:6])   
+#         YY1,YS1 = updateY(YY,YS,IND);   print("YY1[0:3] = ", YY1[0:3] )
+#         YY = YY1;   YS = YS1
+#     ##== (8.4D) 會話結語(closing: open/answerF-->convF-->closing say) ==##    
+#     print("\n>> answerF = ",answerF)    
+#     print("\n>> The Result YY = ",YY)    
+#     # return redirect(url_for("closing",convF=answerF,answer=str(YY)))
+#     return redirect(url_for("closing",answer=str(YY)))
+#     # answerF = answerF + "最後答案是 X ＝ " + str(YY)
+#     # return "<html><body>" + answerF + "</body></html>"
 
-###=== (3.5) 會話結話(closing: open/answerF-->convF-->closing say) ===###
-@app.route("/closing/<string:answer>")   # /<string:convF>   
-def closing(answer):
-    global answerF
-    print("*** closing ***")
-    # convF1 = convF
-    convF1 = answerF + "最後答案是 X ＝ " + answer
-    return "<html><body>" + convF1 + "</body></html>"
+# ###=== (3.5) 會話結話(closing: open/answerF-->convF-->closing say) ===###
+# @app.route("/closing/<string:answer>")   # /<string:convF>   
+# def closing(answer):
+#     global answerF
+#     print("*** closing ***")
+#     # convF1 = convF
+#     convF1 = answerF + "最後答案是 X ＝ " + answer
+#     return "<html><body>" + convF1 + "</body></html>"
 
 if __name__ == '__main__':
     app.debug = True
