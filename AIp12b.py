@@ -106,8 +106,10 @@ def index():
     # aT = "<p><input type='text' name='dd' size='6' background-color='888888'/></p>"
     # aB = "<button type='submit'>送出</button>"
     # HTML = "<html><body>" + openF + aT + aB + "</body></html>"
+
     print("Hello World")
     sys.stdout.flush()
+
     HTML = "<html><body>" + openF + "<p><input type='text' name='dd' size='6' background-color='888888'/></p>" + "<button type='submit'>送出</button>" + "</body></html>"
     return HTML
     ## "<html><body>" + openF + "<p><input type='text' name='dd' size='6' background-color='888888'/></p>" + "<button type='submit'>送出</button>" + "</body></html>"
