@@ -28,14 +28,14 @@
 ###=== (3.3) 將程式部署到Heroku App,並測試 ===###  
 # $ heroku login              // 登入 Heroku
 # $ git init                  // 初始化專案
-# $ heroku git:remote -a 專案名稱
-# $ git add .                // 更新專案
+# $ heroku git:remote -a 專案名稱  // 專案名稱 = aip12x
+# $ git add .                // 更新專案 
 # $ git commit -m “更新的訊息”
 # $ git push heroku master
-
+# --> 部署的網址： https://aip12x.herokuapp.com/   
+#---
 # $ rm -f .git   // 清除 git 必要的話
 
-# --> 部署的網址： https://aip12x.herokuapp.com/   
 
 #####===== (4) AIp12b.py =====##### ===> revised from AIp11dd.py ***
 
