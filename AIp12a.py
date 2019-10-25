@@ -88,14 +88,14 @@ app = Flask(__name__)    # __name__ 代表目前執行的模組
 
 @app.route("/")      #== 函式的裝飾(Decorator): 以函式為基礎，提供附加的功能
 def home():
-    print("This is route_home")
-    sys.stdout.flush()
+    print("This is route_home", file=open('file.txt', 'w'))
+    #sys.stdout.flush()
     return "Hello Flask 2"
 
 @app.route("/test")  #== 代表我們要處理的網站路徑
 def test():
-    print("This is test")
-    sys.stdout.flush()
+    print("This is test", file=open('file.txt', 'w'))
+    #sys.stdout.flush()
     return "This is a Test"
 
 if __name__=="__main__":  # 如果以上程式執行
