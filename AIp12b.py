@@ -103,8 +103,9 @@ def index():
     # return "index_test OK!" 
     return "<html><body>" + openF +  
 #    "<form method='get' action=" + url_for('interact') + ">" +
-    "<input type='text' name='dd' size='6' background-color='888888'/>" + 
-    "<button type='submit'>送出</button> </body></html>"
+#    "<input type='text' name='dd' size='6' background-color='888888'/>" + 
+#    "<button type='submit'>送出</button>" +
+    "</body></html>"
 #    "<button type='submit'>送出</button> </form> </body></html>"
     # return render_template('conversationDD.html', sayF=Markup(openF))
 
