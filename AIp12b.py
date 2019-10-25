@@ -105,7 +105,7 @@ def index():
     aF1 = "<form method='get' action=" + url_for('interact') + ">"
     # aT = "<p><input type='text' name='dd' size='6' background-color='888888'/></p>"
     # aB = "<button type='submit'>送出</button>"
-    HTML = "<html><body>" + "<form action='/interact' method='post'>" + "</form></body></html>"
+    HTML = "<html><body>" + "<form action="+url_for('interact')+" method='post'>" + "</form></body></html>"
     return HTML
     ## "<html><body>" + openF + "<p><input type='text' name='dd' size='6' background-color='888888'/></p>" + "<button type='submit'>送出</button>" + "</body></html>"
 #    "<form method='get' action=" + url_for('interact') + ">" +
