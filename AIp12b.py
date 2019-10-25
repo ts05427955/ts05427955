@@ -101,8 +101,7 @@ app = Flask(__name__)
 def index():
     global openF
     # return "index_test OK!" 
-    return "<html><body>" + openF + 
-    "</body></html>"
+    return "<html><body>" + openF + "<button type='submit'>送出</button>" + "</body></html>"
 #    "<form method='get' action=" + url_for('interact') + ">" +
 #    "<input type='text' name='dd' size='6' background-color='888888'/>" + 
 #    "<button type='submit'>送出</button>" +
