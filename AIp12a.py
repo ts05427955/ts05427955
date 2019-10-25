@@ -96,10 +96,10 @@ def test():
 if __name__=="__main__":  # 如果以上程式執行
     app.run()   # 立刻啟動伺服器
 
-###=== (3.2) 將程式部署到Heroku App,並測試 ===###  
+###=== (3.3) 將程式部署到Heroku App,並測試 ===###  
 # $ heroku login              // 登入 Heroku
 # $ git init                  // 初始化專案
-# $ heroku git:remote -a 專案名稱
+# $ heroku git:remote -a 專案名稱  // 專案名稱 = aip12x
 # $ git add .                // 更新專案
 # $ git commit -m “更新的訊息”
 # $ git push heroku master
