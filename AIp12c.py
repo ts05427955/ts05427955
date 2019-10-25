@@ -1,21 +1,10 @@
-# AIp12b.py: AI practices - 12 > program b: a Web proctor/guesser of AB game
-# Jia-Sheng Heh, 10/24/2019, revised from AIp11dd.py
+# AIp12c.py: AI practices - 12 > program c: a modular program of Web AB game
+# Jia-Sheng Heh, 10/26/2019, revised from AIp12b.py
 
-#################### AIp12b.py ####################
+#################### AIp12c.py ####################
 
 #####===== (1) Git/GitHub 遠端同步操作 =====#####
-###=== (1.1) GitHub ===###
-###=== (1.2) 註冊GitHub帳號 ===### 
-###=== (1.3) Git安裝與安裝 ===### 
-###=== (1.4) 工作目錄(repository)設定 ===###
-###=== (1.5) 工作目錄同步 ===### 
-
 #####===== (2) Heroku =====#####
-###=== (2.1) Heroku ===###
-###=== (2.2) 註冊Heroku帳號 ===###
-###=== (2.3) 安裝命令行工具CLI ===###
-###=== (2.4) 建立新應用 ===###
-
 #####===== (3) 結合VScode/Flask/Git/Heroku建立網頁 =====#####
 ###=== (3.1) 建立新應用 ===###  
 # 進入官網 —-> New App —-> 取專案名稱(AIp12x) —-> Deploy
@@ -46,7 +35,7 @@
 # $ rm -f .git   // 清除 git 必要的話
 
 
-#####===== (4) AIp12b.py =====##### ===> revised from AIp11dd.py ***
+#####===== (4) AIp12c.py =====##### ===> revised from AIp12b.py ***
 
 ###=== (4.1) 載入軟件包與自製函數(initialY,computeAB,updateY,centerY,judgeX) ===###
 from flask import Flask, request, url_for, redirect, render_template, Markup
@@ -115,7 +104,7 @@ def index():
 @app.route("/interact")           
 def interact():
     global kk, X, openF, answerF              
-    ##== (4.4A) Questioning: 互動時取得詢問值(query d1/,,/d4-->Y-->nA/nB) ==##
+    ##== (8.4A) Questioning: 互動時取得詢問值(query d1/,,/d4-->Y-->nA/nB) ==##
     dd = request.values['dd'];
     Xactual = np.array(list(dd)).astype(np.int)
     print("Xactual =",Xactual)
@@ -137,7 +126,7 @@ def interact():
         IND = np.where((nA==nAX) & (nB==nBX))[0];   print("len(IND) = ",len(IND),", IND[0:6] = ",IND[0:6])   
         YY1,YS1 = updateY(YY,YS,IND);   print("YY1[0:3] = ", YY1[0:3] )
         YY = YY1;   YS = YS1
-    ##== (8.4D) 會話結語(closing: open/answerF-->convF-->closing say) ==##    
+    ##== (4.4D) 會話結語(closing: open/answerF-->convF-->closing say) ==##    
     print("\n>> answerF = ",answerF)    
     print("\n>> The Result YY = ",YY)    
     # return redirect(url_for("closing",convF=answerF,answer=str(YY)))
@@ -155,4 +144,4 @@ def closing(answer):
     return "<html><body>" + convF1 + "</body></html>"
 
 if __name__ == '__main__':
-    app.run() 
+    app.run()

@@ -99,9 +99,6 @@ def test():
     return "This is a Test"
 
 if __name__=="__main__":  # 如果以上程式執行
-    #gunicorn_logger = logging.getLogger('gunicorn.error')
-    #app.logger.handlers = gunicorn_logger.handlers
-    #app.logger.setLevel(gunicorn_logger.level)
     app.run()   # 立刻啟動伺服器
 
 ###=== (3.3) 將程式部署到Heroku App,並測試 ===###  
