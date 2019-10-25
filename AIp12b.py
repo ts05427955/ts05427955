@@ -41,7 +41,6 @@
 
 ###=== (3.1) 載入軟件包與自製函數(initialY,computeAB,updateY,centerY,judgeX) ===###
 from flask import Flask, request, url_for, redirect, render_template, Markup
-import sys
 import numpy as np
 import pandas as pd
 def initialY(NN):   #-- generate all possible solutions
@@ -101,17 +100,6 @@ app = Flask(__name__)
 @app.route("/")                   
 def index():
     global openF
-    # return "index_test OK!" 
-    # aF1 = "<form method='get' action=" + url_for('interact') + ">"
-    # aT = "<p><input type='text' name='dd' size='6' background-color='888888'/></p>"
-    # aB = "<button type='submit'>送出</button>"
-    # HTML = "<html><body>" + "<form action="+url_for('interact')+" method='post'>" + "</form></body></html>"
-    # return HTML
-    ## "<html><body>" + openF + "<p><input type='text' name='dd' size='6' background-color='888888'/></p>" + "<button type='submit'>送出</button>" + "</body></html>"
-#    "<form method='get' action=" + url_for('interact') + ">" +
-#    "<input type='text' name='dd' size='6' background-color='888888'/>" + 
-#    "<button type='submit'>送出</button>" +
-#    "<button type='submit'>送出</button> </form> </body></html>"
     return render_template('conversationDD.html', sayF=Markup(openF))
 
 ###=== (3.4) 會話互動(interaction: Questioning-Answering)) ===###
@@ -158,5 +146,4 @@ def closing(answer):
     return "<html><body>" + convF1 + "</body></html>"
 
 if __name__ == '__main__':
-    app.debug = True
     app.run()
