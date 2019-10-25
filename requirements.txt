@@ -1,5 +1,4 @@
 Flask
-sys
 numpy
 pandas
 gunicorn
