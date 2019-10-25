@@ -101,7 +101,7 @@ app = Flask(__name__)
 def index():
     global openF
     # return "index_test OK!" 
-    return "<html><body><div class='saying'>  {{ sayF }}  </div> <div class='querying'></body></html>"
+    return "<html><body>" + openF +  "</body></html>"
     # return render_template('conversationDD.html', sayF=Markup(openF))
 
 ###=== (3.4) 會話互動(interaction: Questioning-Answering)) ===###
