@@ -1,11 +1,12 @@
 from flask import Flask, request, abort
+
 from linebot import (
     LineBotApi, WebhookHandler
 )
 from linebot.exceptions import(
     InvalidSignatureError
 )
-from line.models import *
+from linebot.models import *
 
 app=Flask(__name__)  # __name__ 代表目前執行的模組
 
