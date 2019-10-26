@@ -30,7 +30,7 @@
 from flask import Flask, request, abort
 >>>>>>> bot1
 from linebot import (
-    LineBotApi, webhookHandler
+    LineBotApi, WebhookHandler
 )
 from linebot.exceptions import(
     InvalidSignatureError
