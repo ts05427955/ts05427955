@@ -19,10 +19,20 @@
 # —> Messaging API —-> Create new channel —-> Selected Provider:
 #    + App icon + App name + App description + Category/Subcategory —-> Create
 
+<<<<<<< HEAD
 ###=== (3.3) 機器人訊息 ===###  
 # LINE Developer —> Provider List —-> 選擇機器人 —-> Channel settings 
 #   + Channel Secret 密碼* + Channel Access Token 密碼* ===> 用於webhook程式 (5.3)
 #   ＋ QR code                                         ===> 用於加入群組
+=======
+from linebot import (
+    LineBotApi, webhookHandler
+)
+from linebot.exceptions import(
+    InvalidSignatureError
+)
+from line.models import *
+>>>>>>> aip12c_bot1
 
 #####===== (4) 結合VScode/Flask/Git/Heroku建立網頁 =====#####
 ###=== (4.1) 建立新應用 ===###  
