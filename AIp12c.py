@@ -39,9 +39,9 @@ def callback():
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
     print(event)
-    text = event.message.text
-    if text == "100001":
+    if event.message.id == "100001":
         return
+    text = event.message.text
     if (text=="Hi"):
         reply_text = "Hello"
         #Your user ID
