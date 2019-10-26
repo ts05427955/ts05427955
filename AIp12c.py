@@ -87,7 +87,11 @@ def callback():
     print(">>>>>>>>> 4.testing-body:"+body)
     # handle webhook body
     try:
+<<<<<<< HEAD
         print(">>>>>>>>> 5.testing-try:...")
+=======
+        print(">>>>>>>>> testing-1...")
+>>>>>>> bot1
         handler.handle(body, signature)
     except InvalidSignatureError:
         abort(400)
