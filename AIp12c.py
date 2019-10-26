@@ -1,6 +1,6 @@
 from flask import Flask, request, abort
 
-form linebot import (
+from linebot import (
     LineBotApi, webhookHandler
 )
 from linebot.exceptions import(
