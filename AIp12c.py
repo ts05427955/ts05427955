@@ -90,6 +90,8 @@ def handle_message(event):
     if event.message.id == "100001":
         return
     text = event.message.text
+    if text == "100001":
+        return
     if (text=="Hi"):
         reply_text = "Hello"
         #Your user ID
