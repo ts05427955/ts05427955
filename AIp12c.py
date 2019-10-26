@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # AIp12c.py: AI practices - 12 > program c: a Chatbot example
 # Jia-Sheng Heh, 10/26/2019, revised from bot1.py
 
@@ -25,6 +26,9 @@
 #   + Channel Secret 密碼* + Channel Access Token 密碼* ===> 用於webhook程式 (5.3)
 #   ＋ QR code                                         ===> 用於加入群組
 =======
+=======
+from flask import Flask, request, abort
+>>>>>>> bot1
 from linebot import (
     LineBotApi, webhookHandler
 )
