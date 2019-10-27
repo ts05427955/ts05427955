@@ -155,6 +155,8 @@ def handle_message(event):
             YY1,YS1 = updateY(YY,YS,IND);   print("YY1[0:3] = ", YY1[0:3] )
             YY = YY1;   YS = YS1
         print(">>>>>>>>>> 解題4: answerF = ",answerF)   
+        answerF = answerF + "最後答案是 " + join(["for X=",''.join(map(str,YY))])
+        print(">>>>>>>>>> 解題5: answerF = ",answerF)   
         reply_text = answerF
         # reply_text = "".join(["for X=",''.join(map(str,Xactual))])
     elif(text=="開始"):    reply_text = openF2
