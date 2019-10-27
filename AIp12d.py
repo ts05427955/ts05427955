@@ -134,11 +134,12 @@ def handle_message(event):
         print(">>>>>>>>>> 舉例")
         Xactual = np.random.choice(range(10),4,replace=False)
         reply_text = "".join(["X=",''.join(map(str,Xactual))])
-    # elif(text=="解題"):    print(">>>>>>>>>> 解題1")
-        ##== (前4.4B) 產生所有可能解 (YY/YS) 與 確定題目 (Xactual) ==##
-        # NN = 4;   
-        # YY,YS = initialY(NN);   print("YY.shape = ",YY.shape)
-        # print(">>>>>>>>>> 解題2: YY[0:5] = ",YY[0],YY[1],YY[2],YY[3],YY[4])   
+    elif(text=="解題"):    
+        print(">>>>>>>>>> 解題1")
+        #== (前4.4B) 產生所有可能解 (YY/YS) 與 確定題目 (Xactual) ==##
+        NN = 4;   
+        YY,YS = initialY(NN);   print("YY.shape = ",YY.shape)
+        print(">>>>>>>>>> 解題2: YY[0:5] = ",YY[0],YY[1],YY[2],YY[3],YY[4])   
         ##== (前4.4C) 猜測迴圈 (X: YY/YS-->YY1/YS1) ==##
         # while ((YY.shape[0]>1) & (kk<8)):
         #     kk = kk+1
@@ -154,7 +155,7 @@ def handle_message(event):
         #     YY1,YS1 = updateY(YY,YS,IND);   print("YY1[0:3] = ", YY1[0:3] )
         #     YY = YY1;   YS = YS1
         # reply_text = "".join(["解題過程是 ",answerF])
-        # reply_text = "".join(["X=",''.join(map(str,Xactual))])
+        reply_text = "".join(["for X=",''.join(map(str,Xactual))])
     elif(text=="開始"):    reply_text = openF2
     else:  # 如果非以上的選項，就會學你說話
         reply_text = text
