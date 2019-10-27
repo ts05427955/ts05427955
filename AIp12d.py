@@ -126,19 +126,34 @@ def handle_message(event):
         return
     text = event.message.text
     print(">>>>>>>>>> TEXT = "+text)
-    if (text=="Hi"):   
-        reply_text = "Hello"
-    elif(text=="機器人"):
-        reply_text = "有！我是機器人，在喔！"
-    elif(text=="你好"): 
-        reply_text = "你好啊..."
-    elif(text=="介紹"):
-        reply_text = openF1
+    if (text=="Hi"):      reply_text = "Hello"
+    elif(text=="機器人"):  reply_text = "有！我是機器人，在喔！"
+    elif(text=="你好"):    reply_text = "你好啊..."
+    elif(text=="介紹"):    reply_text = openF1
     elif(text=="舉例"):
-        X = np.random.choice(range(10),4,replace=False)
-        reply_text = "".join(["X=",''.join(map(str,X))])
-    elif(text=="開始"):
-        reply_text = openF2
+        Xactual = np.random.choice(range(10),4,replace=False)
+        reply_text = "".join(["X=",''.join(map(str,Xactual))])
+    elif(text=="解題"):
+        ##== (前4.4B) 產生所有可能解 (YY/YS) 與 確定題目 (Xactual) ==##
+        NN = 4;   
+        YY,YS = initialY(NN);   print("YY.shape = ",YY.shape)
+        print("YY[0:5] = ",YY[0],YY[1],YY[2],YY[3],YY[4])   
+        ##== (前4.4C) 猜測迴圈 (X: YY/YS-->YY1/YS1) ==##
+        while ((YY.shape[0]>1) & (kk<8)):
+        kk = kk+1
+            if (kk==1):    X = np.array([3,1,2,5])
+            elif (kk==2):  X = np.array([4,7,9,8])
+            else:          X = centerY(YY)
+            nAX,nBX = judgeX(Xactual,X)
+            print("\n###### >> kk = ",kk,": 猜測 X = ",X,", nAX = ",nAX,", nBX = ",nBX,"######")  
+            answerF = answerF + "<p> 第 "+str(kk)+" 次猜測: X = "+str(X)+", 可以得到 "+str(nAX)+"A"+str(nBX)+"B </p>"
+            # Ytable,Ydf = tableY(YY);        print("Ydf = \n",Ydf)
+            nA,nB = computeAB(X,YY,YS);     print("nA[0:5] = ",nA[0:5],", nB[0:5] = ",nB[0:5])
+            IND = np.where((nA==nAX) & (nB==nBX))[0];   print("len(IND) = ",len(IND),", IND[0:6] = ",IND[0:6])   
+            YY1,YS1 = updateY(YY,YS,IND);   print("YY1[0:3] = ", YY1[0:3] )
+            YY = YY1;   YS = YS1
+        reply_text = "".join(["解題過程是 ",answerF])
+    elif(text=="開始"):    reply_text = openF2
     else:  # 如果非以上的選項，就會學你說話
         reply_text = text
     message = TextSendMessage(reply_text)
