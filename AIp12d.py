@@ -86,8 +86,8 @@ def judgeX(X,Xactual):      #-- judge (nA,nB) of X
     return nAX,nBX
 
 ###=== (5.2) 設定對話(kk,openF,answerF) ===###
-# Xactual = np.array([3,1,4,5])   
-X = np.array([1,2,3,4])   
+Xactual = np.array([1,2,3,4])   
+X = np.array([5,6,7,8])   
 # kk = 0
 openF1 = "歡迎加入 AB 遊戲: 猜測四個相異的 0-9數字。A 表示數字對，而且位置也對；B 表示數字對，但位置不對。" 
 openF2 = "來出個 四個0-9數字 的題目!!"                              #-- openF: 會話啟始(opening)
@@ -121,6 +121,7 @@ def callback():
 ###=== (5.5) 處理訊息  ===###
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
+    global Xactual
     print(event)
     if event.message.id == "100001":
         return
