@@ -134,10 +134,11 @@ def handle_message(event):
         Xactual = np.random.choice(range(10),4,replace=False)
         reply_text = "".join(["X=",''.join(map(str,Xactual))])
     elif(text=="解題"):
+        print(">>>>>>>>>> 解題1")   
         ##== (前4.4B) 產生所有可能解 (YY/YS) 與 確定題目 (Xactual) ==##
         NN = 4;   
         YY,YS = initialY(NN);   print("YY.shape = ",YY.shape)
-        print("YY[0:5] = ",YY[0],YY[1],YY[2],YY[3],YY[4])   
+        print(">>>>>>>>>> 解題2: YY[0:5] = ",YY[0],YY[1],YY[2],YY[3],YY[4])   
         ##== (前4.4C) 猜測迴圈 (X: YY/YS-->YY1/YS1) ==##
         while ((YY.shape[0]>1) & (kk<8)):
             kk = kk+1
@@ -145,7 +146,7 @@ def handle_message(event):
             elif (kk==2):  X = np.array([4,7,9,8])
             else:          X = centerY(YY)
             nAX,nBX = judgeX(Xactual,X)
-            print("\n###### >> kk = ",kk,": 猜測 X = ",X,", nAX = ",nAX,", nBX = ",nBX,"######")  
+            print(">>>>>>>>>> 解題3: \n###### >> kk = ",kk,": 猜測 X = ",X,", nAX = ",nAX,", nBX = ",nBX,"######")  
             answerF = answerF + "<p> 第 "+str(kk)+" 次猜測: X = "+str(X)+", 可以得到 "+str(nAX)+"A"+str(nBX)+"B </p>"
             # Ytable,Ydf = tableY(YY);        print("Ydf = \n",Ydf)
             nA,nB = computeAB(X,YY,YS);     print("nA[0:5] = ",nA[0:5],", nB[0:5] = ",nB[0:5])
