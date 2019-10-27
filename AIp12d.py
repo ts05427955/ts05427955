@@ -1,7 +1,7 @@
-# AIp12c.py: AI practices - 12 > program c: a Chatbot example
-# Jia-Sheng Heh, 10/26/2019, revised from bot1.py
+# AIp12d.py: AI practices - 12 > program d: a Chatbot of AB game
+# Jia-Sheng Heh, 10/27/2019, revised from AIp12c.py and AIp12b.py
 
-#################### AIp12c.py ####################
+#################### AIp12b.py ####################
 
 #####===== (1) Git/GitHub 遠端同步操作 =====#####
 #####===== (2) Heroku =====#####
