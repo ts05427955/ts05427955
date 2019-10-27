@@ -135,9 +135,9 @@ def handle_message(event):
         reply_text = "".join(["X=",''.join(map(str,Xactual))])
     elif(text=="解題"):    print(">>>>>>>>>> 解題1")
         ##== (前4.4B) 產生所有可能解 (YY/YS) 與 確定題目 (Xactual) ==##
-        NN = 4;   
-        YY,YS = initialY(NN);   print("YY.shape = ",YY.shape)
-        print(">>>>>>>>>> 解題2: YY[0:5] = ",YY[0],YY[1],YY[2],YY[3],YY[4])   
+        # NN = 4;   
+        # YY,YS = initialY(NN);   print("YY.shape = ",YY.shape)
+        # print(">>>>>>>>>> 解題2: YY[0:5] = ",YY[0],YY[1],YY[2],YY[3],YY[4])   
         ##== (前4.4C) 猜測迴圈 (X: YY/YS-->YY1/YS1) ==##
         # while ((YY.shape[0]>1) & (kk<8)):
         #     kk = kk+1
