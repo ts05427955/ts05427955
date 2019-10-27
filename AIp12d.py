@@ -137,7 +137,7 @@ def handle_message(event):
     elif(text=="解題"):    
         print(">>>>>>>>>> 解題1")
         #== (前4.4B) 產生所有可能解 (YY/YS) 與 確定題目 (Xactual) ==##
-        NN = 4;   kk = 0
+        NN = 4;   kk = 0;   answerF = ""
         YY,YS = initialY(NN);   print("YY.shape = ",YY.shape)
         print(">>>>>>>>>> 解題2: YY[0:5] = ",YY[0],YY[1],YY[2],YY[3],YY[4])   
         ##== (前4.4C) 猜測迴圈 (X: YY/YS-->YY1/YS1) ==##
