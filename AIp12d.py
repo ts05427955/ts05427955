@@ -87,6 +87,7 @@ def judgeX(X,Xactual):      #-- judge (nA,nB) of X
 
 ###=== (5.2) 設定對話(kk,openF,answerF) ===###
 # Xactual = np.array([3,1,4,5])   
+X = np.array([1,2,3,4])   
 # kk = 0
 openF1 = "歡迎加入 AB 遊戲: 猜測四個相異的 0-9數字。A 表示數字對，而且位置也對；B 表示數字對，但位置不對。" 
 openF2 = "來出個 四個0-9數字 的題目!!"                              #-- openF: 會話啟始(opening)
@@ -133,6 +134,9 @@ def handle_message(event):
         reply_text = "你好啊..."
     elif(text=="介紹"):
         reply_text = openF1
+    elif(text=="舉例"):
+        X = np.random.choice(range(10),4,replace=False)
+        reply_text = X
     elif(text=="開始"):
         reply_text = openF2
     else:  # 如果非以上的選項，就會學你說話
