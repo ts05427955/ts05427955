@@ -87,8 +87,7 @@ def judgeX(X,Xactual):      #-- judge (nA,nB) of X
 
 ###=== (5.2) 設定對話(kk,openF,answerF) ===###
 Xactual = np.array([1,2,3,4])   
-X = np.array([5,6,7,8])   
-# kk = 0
+# X = np.array([5,6,7,8])   
 openF1 = "歡迎加入 AB 遊戲: 猜測四個相異的 0-9數字。A 表示數字對，而且位置也對；B 表示數字對，但位置不對。" 
 openF2 = "來出個 四個0-9數字 的題目!!"                              #-- openF: 會話啟始(opening)
 # answerF = openF + "<hr color='orange'>" + "<H3>猜測過程：</H3>"   #-- answerF: 互動時答覆(answering) 
@@ -138,7 +137,7 @@ def handle_message(event):
     elif(text=="解題"):    
         print(">>>>>>>>>> 解題1")
         #== (前4.4B) 產生所有可能解 (YY/YS) 與 確定題目 (Xactual) ==##
-        NN = 4;   
+        NN = 4;   kk = 0
         YY,YS = initialY(NN);   print("YY.shape = ",YY.shape)
         print(">>>>>>>>>> 解題2: YY[0:5] = ",YY[0],YY[1],YY[2],YY[3],YY[4])   
         ##== (前4.4C) 猜測迴圈 (X: YY/YS-->YY1/YS1) ==##
