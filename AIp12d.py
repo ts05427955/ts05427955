@@ -88,10 +88,10 @@ def judgeX(X,Xactual):      #-- judge (nA,nB) of X
 ###=== (5.2) 設定對話(kk,openF,answerF) ===###
 # Xactual = np.array([3,1,4,5])   
 # kk = 0
-openF1 = "歡迎加入 AB 遊戲: 電腦猜題--這是一個猜測四個相異的 0-9數字的問題。" \
-         "A 表示數字對，而且位置也對；B 表示數字對，但位置不對。" 
-openF2 = "來出個 四個0-9數字 的題目!!"                              #-- openF: 會話啟始(opening)
-answerF = openF + "<hr color='orange'>" + "<H3>猜測過程：</H3>"   #-- answerF: 互動時答覆(answering) 
+# openF1 = "歡迎加入 AB 遊戲: 電腦猜題--這是一個猜測四個相異的 0-9數字的問題。" \
+#          "A 表示數字對，而且位置也對；B 表示數字對，但位置不對。" 
+# openF2 = "來出個 四個0-9數字 的題目!!"                              #-- openF: 會話啟始(opening)
+# answerF = openF + "<hr color='orange'>" + "<H3>猜測過程：</H3>"   #-- answerF: 互動時答覆(answering) 
 app = Flask(__name__)  # __name__ 代表目前執行的模組
 
 ###=== (5.3) LINE介面密碼 ===### (參考3.3)
