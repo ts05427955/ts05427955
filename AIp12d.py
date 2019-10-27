@@ -133,7 +133,7 @@ def handle_message(event):
     elif(text=="機器人"):
         reply_text = "有！我是機器人，在喔！"
     elif(text=="介紹"):
-        reply_text = openF
+        reply_text = "<html><body>" + openF + "</body></html>"
     else:  # 如果非以上的選項，就會學你說話
         reply_text = text
     message = TextSendMessage(reply_text)
