@@ -5,20 +5,9 @@
 
 #####===== (1) Git/GitHub 遠端同步操作 =====#####
 #####===== (2) Heroku =====#####
-
 #####===== (3) LINE Developer建立bot =====#####
-
 ###=== (3.1) 申請 LINE Developer帳號 ===###  
-# LINE Developer 網站
-# --> 選擇 Developer Trial方案 (好友數80,無LINE@,發訊無上限,有Reply/Push API) 
-# --> Start Using Message API --> Name + Email address
-
 ###=== (3.2) 創建 bot 機器人 ===###  
-# LINE Developer 登入
-# —> Provider List —> Create New Provider —> Create
-# —> Messaging API —-> Create new channel —-> Selected Provider:
-#    + App icon + App name + App description + Category/Subcategory —-> Create
-
 ###=== (3.3) 機器人訊息 ===###  
 # LINE Developer —> Provider List —-> 選擇機器人 —-> Channel settings 
 #   + Channel Secret 密碼* + Channel Access Token 密碼* ===> 用於webhook程式 (5.3)
@@ -26,14 +15,11 @@
 
 #####===== (4) 結合VScode/Flask/Git/Heroku建立網頁 =====#####
 ###=== (4.1) 建立新應用 ===###  
-# 進入官網 —-> New App —-> 取專案名稱(AIp12x) —-> Deploy
 ###=== (4.2) VScode建立Flask專案描述檔案 ===###  
-# 建立 (1) runtime.txt: 描述使用的python環境
-# 建立 (2) requirements.txt: 描述程式運作所需要的套件
-#       加上 line-bot-sdk
-# 建立 (3) Profile: 告訴Heroku如何執行程式
-#       web gunicorn AIp12c:app
-# 建立本程式碼 (4) AIp12c.py
+# 建立 (1) runtime.txt:        描述使用的python環境
+# 建立 (2) requirements.txt:   加上 line-bot-sdk
+# 建立 (3) Profile:            web gunicorn AIp12d:app
+# 建立本程式碼 (4) AIp12d.py
 ###=== (4.3) 先在本機上測試本程式 ==> 此步無法進行，可加入 heroku 偵錯 (參見4.5)
 ###=== (4.4) 將程式部署到Heroku App,並測試 ===###  
 # $ heroku login              // 登入 Heroku
@@ -41,22 +27,72 @@
 # $ heroku git:remote -a 專案名稱  // 專案名稱 = aip12x
 # $ git add .                // 更新專案 
 # $ git commit -m “更新的訊息”
-# $ git push heroku master
-# --> 部署的網址： https://aip12x.herokuapp.com/   
+# $ git push heroku master   // --> 部署的網址： https://aip12x.herokuapp.com/   
 ###=== (4.5) 在部署Heroku時，同時偵錯 ===###  
 # 建議 開設兩個 Terminals, 一個部署(如 4.4), 一個偵錯(如下行指令)
 # $ heroku logs --tail --app aip12x   (偵錯指令)
 # 偵錯時，在程式碼中 加入 print()
 
-#####===== (5) AIp12c.py =====##### ===> 網路簡易範例
+#####===== (5) AIp12d.py =====##### ===> 網路簡易範例
 
-###=== (5.1) 載入軟件包 ===###  
-from flask import Flask, request, abort
+###=== (5.1) 載入軟件包 與自製函數(initialY,computeAB,updateY,centerY,judgeX) ===###  
 from linebot import ( LineBotApi, WebhookHandler )
 from linebot.exceptions import( InvalidSignatureError )
-from linebot.models import *
+from linebot.models import *    
+from flask import Flask, request, abort #---------- 下述是加入 ABgame
+from flask import url_for, redirect, render_template, Markup
+import numpy as np
+import pandas as pd
+def initialY(NN):   #-- generate all possible solutions
+    NN10 = 10**NN
+    y = set(np.arange(10))
+    Y = [(y1,y2,y3,y4) for y1 in y for y2 in y-{y1} for y3 in y-{y1,y2} for y4 in y-{y1,y2,y3}]
+    YY = np.array(Y)
+    YS = list()
+    for ind in np.arange(YY.shape[0]): YS.append(set(Y[ind]))
+    return YY,YS
+def tableY(YY):     #-- tabulate YY to Ytable/Ydf (NO LONGER USED)
+    Ytable = np.zeros((4,10),dtype=np.int)
+    Ytable.shape
+    for k in np.arange(4):
+        for j in np.arange(10):
+            Ytable[k,j] = np.sum(YY[:,k]==j)
+    Ytable
+    Ydf = pd.DataFrame(Ytable);   Ydf
+    return Ytable, Ydf
+def computeAB(X1,YY1,YS1):  #-- compute nA,nB
+    ### (4*) form X array/sets (X-->XX,XS) #####
+    XX1 = np.array(list(X1)*YY1.shape[0]).reshape(YY1.shape[0],4)
+    XS1 = set(X1)
+    ### (5*) calculate (nA,nB) outcomes
+    nA1 = np.sum(XX1==YY1, axis=1)   #-- np.sum(nA==1): counts for 1A2B
+    nB1 = np.zeros(YY1.shape[0],dtype=np.int)
+    for ind in np.arange(YY1.shape[0]): nB1[ind] = 4 - len(XS1-YS1[ind]) - nA1[ind]
+    return nA1,nB1
+def updateY(YY1,YS1,IND1):  #-- update YY1,YS1
+    ### (6*) iterate YY and YS
+    YY2 = YY1[IND1]   
+    YS2 = [YS1[i] for i in IND1]
+    return YY2,YS2
+def centerY(ZZ):            #-- center of ZZ array
+    Zmean0 = ZZ.mean(axis=0);                 # print("Zmean0 = ",Zmean0)
+    Zmean = np.array(list(Zmean0)*ZZ.shape[0]).reshape(ZZ.shape[0],4);   # print("Zmean = ",Zmean)
+    D = ((ZZ-Zmean)*(ZZ-Zmean)).sum(axis=1);  # print("D = ",D)
+    return ZZ[D.argmin()]
+def judgeX(X,Xactual):      #-- judge (nA,nB) of X
+    nAX = np.sum(X==Xactual);                     
+    nBX = 4 - len(set(X) - set(Xactual)) - nAX;   
+    # print("nAX = ",nAX,", nBX = ",nBX)
+    return nAX,nBX
 
-###=== (5.2) 程式宣告 ===###  
+###=== (5.2) 設定對話(kk,openF,answerF) ===###
+# Xactual = np.array([3,1,4,5])   
+# kk = 0
+openF = "<H3>歡迎加入 AB 遊戲: 電腦猜題</H3>    <p>這是一個猜測四個相異的 0-9數字的問題</p>" \
+        "<p>A 表示數字對，而且位置也對</p>       <p>B 表示數字對，但位置不對</p>" \
+        "<p>現在，你來當 出題者 喔... (電腦是 猜題者 guesser)"  \
+        "<hr><p>來出個題吧!!</p>"                                 #-- openF: 會話啟始(opening)
+answerF = openF + "<hr color='orange'>" + "<H3>猜測過程：</H3>"   #-- answerF: 互動時答覆(answering) 
 app = Flask(__name__)  # __name__ 代表目前執行的模組
 
 ###=== (5.3) LINE介面密碼 ===### (參考3.3)
@@ -68,13 +104,13 @@ handler = WebhookHandler("48f6b1096e13a1d04269785c75363a8c")  #-- YOUR_CHANNEL_S
 ###=== (5.4) 監聽來自 /callback 的 Post Request  ===###
 @app.route("/callback", methods=['POST']) 
 def callback():
-    print(">>>>>>>>> 1.testing")  # get X-Line-Signature header value
+    # print(">>>>>>>>> 1.testing")  # get X-Line-Signature header value
     signature = request.headers['X-Line-Signature']
-    print(">>>>>>>>> 2.testing")  # get request body as text
+    # print(">>>>>>>>> 2.testing")  # get request body as text
     body = request.get_data(as_text=True)
-    print(">>>>>>>>> 3.testing"+body)
+    # print(">>>>>>>>> 3.testing"+body)
     app.logger.info("Request body: " + body)
-    print(">>>>>>>>> 4.testing-body:"+body)
+    # print(">>>>>>>>> 4.testing-body:"+body)
     # handle webhook body
     try:
         print(">>>>>>>>> 5.testing-try:...")
@@ -90,13 +126,14 @@ def handle_message(event):
     if event.message.id == "100001":
         return
     text = event.message.text
-    if (text=="Hi"):
+    if (text=="Hi"):   
         reply_text = "Hello"
-        #Your user ID
     elif(text=="你好"): 
         reply_text = "你好啊..."
     elif(text=="機器人"):
         reply_text = "有！我是機器人，在喔！"
+    elif(text=="介紹"):
+        reply_text = openF
     else:  # 如果非以上的選項，就會學你說話
         reply_text = text
     message = TextSendMessage(reply_text)
