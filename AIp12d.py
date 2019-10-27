@@ -128,7 +128,7 @@ def handle_message(event):
     elif(text=="機器人"):  reply_text = "有！我是機器人，在喔！"
     elif(text=="你好"):    reply_text = "你好啊..."
     elif(text.upper()=="H"):    
-        reply_text = "關鍵字說明：(1)'介紹'--說明AB遊戲。(2)'舉例'--隨機產生X四位數字。(3)'變量'--顯示目前X四位數字。(4)'解題'--說明解題過程。"
+        reply_text = "關鍵字說明：(1)'介紹'--說明AB遊戲。(2)'舉例'--隨機產生X四位數字。(3)'變量'--顯示目前X四位數字。(4)'解題'--說明解題過程。(5)四位相異數字--出題。"
     elif(text=="介紹"):    reply_text = openF1
     elif(text=="舉例"):    
         print(">>>>>>>>>> 舉例1")
