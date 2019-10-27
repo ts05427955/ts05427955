@@ -88,10 +88,9 @@ def judgeX(X,Xactual):      #-- judge (nA,nB) of X
 ###=== (5.2) 設定對話(kk,openF,answerF) ===###
 # Xactual = np.array([3,1,4,5])   
 # kk = 0
-openF = "<H3>歡迎加入 AB 遊戲: 電腦猜題</H3>    <p>這是一個猜測四個相異的 0-9數字的問題</p>" \
-        "<p>A 表示數字對，而且位置也對</p>       <p>B 表示數字對，但位置不對</p>" \
-        "<p>現在，你來當 出題者 喔... (電腦是 猜題者 guesser)"  \
-        "<hr><p>來出個題吧!!</p>"                                 #-- openF: 會話啟始(opening)
+openF1 = "歡迎加入 AB 遊戲: 電腦猜題--這是一個猜測四個相異的 0-9數字的問題。" \
+         "A 表示數字對，而且位置也對；B 表示數字對，但位置不對。" 
+openF2 = "來出個 四個0-9數字 的題目!!"                              #-- openF: 會話啟始(opening)
 answerF = openF + "<hr color='orange'>" + "<H3>猜測過程：</H3>"   #-- answerF: 互動時答覆(answering) 
 app = Flask(__name__)  # __name__ 代表目前執行的模組
 
@@ -128,12 +127,14 @@ def handle_message(event):
     text = event.message.text
     if (text=="Hi"):   
         reply_text = "Hello"
-    elif(text=="你好"): 
-        reply_text = "你好啊..."
     elif(text=="機器人"):
         reply_text = "有！我是機器人，在喔！"
+    elif(text=="你好"): 
+        reply_text = "你好啊..."
     elif(text=="介紹"):
-        reply_text = "<html><body>" + openF + "</body></html>"
+        reply_text = openF1
+    elif(text=="開始"):
+        reply_text = openF2
     else:  # 如果非以上的選項，就會學你說話
         reply_text = text
     message = TextSendMessage(reply_text)
