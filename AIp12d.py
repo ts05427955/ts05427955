@@ -103,13 +103,13 @@ handler = WebhookHandler("48f6b1096e13a1d04269785c75363a8c")  #-- YOUR_CHANNEL_S
 ###=== (5.4) 監聽來自 /callback 的 Post Request  ===###
 @app.route("/callback", methods=['POST']) 
 def callback():
-    # print(">>>>>>>>> 1.testing")  # get X-Line-Signature header value
+    print(">>>>>>>>> 1.testing")  # get X-Line-Signature header value
     signature = request.headers['X-Line-Signature']
-    # print(">>>>>>>>> 2.testing")  # get request body as text
+    print(">>>>>>>>> 2.testing")  # get request body as text
     body = request.get_data(as_text=True)
-    # print(">>>>>>>>> 3.testing"+body)
+    print(">>>>>>>>> 3.testing"+body)
     app.logger.info("Request body: " + body)
-    # print(">>>>>>>>> 4.testing-body:"+body)
+    print(">>>>>>>>> 4.testing-body:"+body)
     # handle webhook body
     try:
         print(">>>>>>>>> 5.testing-try:...")
