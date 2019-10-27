@@ -140,7 +140,7 @@ def handle_message(event):
         print("YY[0:5] = ",YY[0],YY[1],YY[2],YY[3],YY[4])   
         ##== (前4.4C) 猜測迴圈 (X: YY/YS-->YY1/YS1) ==##
         while ((YY.shape[0]>1) & (kk<8)):
-        kk = kk+1
+            kk = kk+1
             if (kk==1):    X = np.array([3,1,2,5])
             elif (kk==2):  X = np.array([4,7,9,8])
             else:          X = centerY(YY)
