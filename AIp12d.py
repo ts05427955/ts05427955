@@ -96,7 +96,7 @@ def handle_message(event):
     elif(text=="你好"): 
         reply_text = "你好啊..."
     elif(text=="機器人"):
-        reply_text = "有！我是機器人，在！"
+        reply_text = "有！我是機器人，在喔！"
     else:  # 如果非以上的選項，就會學你說話
         reply_text = text
     message = TextSendMessage(reply_text)
