@@ -131,8 +131,9 @@ def handle_message(event):
     elif(text=="你好"):    reply_text = "你好啊..."
     elif(text=="介紹"):    reply_text = openF1
     elif(text=="舉例"):    
-        print(">>>>>>>>>> 舉例")
+        print(">>>>>>>>>> 舉例1")
         Xactual = np.random.choice(range(10),4,replace=False)
+        print(">>>>>>>>>> 舉例2: Xactual = ",Xactual)
         reply_text = "".join(["X=",''.join(map(str,Xactual))])
     elif(text=="解題"):    
         print(">>>>>>>>>> 解題1: Xactual = ",Xactual)
