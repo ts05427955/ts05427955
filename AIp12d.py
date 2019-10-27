@@ -87,10 +87,8 @@ def judgeX(X,Xactual):      #-- judge (nA,nB) of X
 
 ###=== (5.2) 設定對話(kk,openF,answerF) ===###
 Xactual = np.array([1,2,3,4])   
-# X = np.array([5,6,7,8])   
 openF1 = "歡迎加入 AB 遊戲: 猜測四個相異的 0-9數字。A 表示數字對，而且位置也對；B 表示數字對，但位置不對。" 
 openF2 = "來出個 四個0-9數字 的題目!!"                              #-- openF: 會話啟始(opening)
-# answerF = openF + "<hr color='orange'>" + "<H3>猜測過程：</H3>"   #-- answerF: 互動時答覆(answering) 
 app = Flask(__name__)  # __name__ 代表目前執行的模組
 
 ###=== (5.3) LINE介面密碼 ===### (參考3.3)
@@ -129,11 +127,15 @@ def handle_message(event):
     if (text=="Hi"):      reply_text = "Hello"
     elif(text=="機器人"):  reply_text = "有！我是機器人，在喔！"
     elif(text=="你好"):    reply_text = "你好啊..."
+    elif(text.upper()=="H"):    
+        reply_text = "關鍵字說明：(1)'介紹'--說明AB遊戲。(2)'舉例'--隨機產生X四位數字。(3)'變量'--顯示目前X四位數字。(4)'解題'--說明解題過程。"
     elif(text=="介紹"):    reply_text = openF1
     elif(text=="舉例"):    
         print(">>>>>>>>>> 舉例1")
         Xactual = np.random.choice(range(10),4,replace=False)
         print(">>>>>>>>>> 舉例2: Xactual = ",Xactual)
+        reply_text = "".join(["X=",''.join(map(str,Xactual))])
+    elif(text=="變量"):    
         reply_text = "".join(["X=",''.join(map(str,Xactual))])
     elif(text=="解題"):    
         print(">>>>>>>>>> 解題1: Xactual = ",Xactual)
@@ -160,9 +162,9 @@ def handle_message(event):
         print(">>>>>>>>>> 解題5: answerF = ",answerF)   
         reply_text = answerF
         # reply_text = "".join(["for X=",''.join(map(str,Xactual))])
-    elif(text=="開始"):    reply_text = openF2
     else:  # 如果非以上的選項，就會學你說話
-        reply_text = text
+        Xactual = list(map(int, list(text)))
+        reply_text = reply_text = "".join(["設定 X=",Xactual])
     message = TextSendMessage(reply_text)
     line_bot_api.reply_message(event.reply_token, message)
 
