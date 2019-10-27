@@ -163,7 +163,7 @@ def handle_message(event):
         reply_text = answerF
         # reply_text = "".join(["for X=",''.join(map(str,Xactual))])
     else:  # 如果非以上的選項，就會學你說話
-        print(">>>>>>>>>> 出題1")
+        print(">>>>>>>>>> 出題1: text = ",text)
         Xactual = list(map(int, list(text)))
         print(">>>>>>>>>> 出題2: Xactual = ",Xactual)
         reply_text = "".join(["設定 X=",Xactual])
