@@ -166,7 +166,7 @@ def handle_message(event):
         print(">>>>>>>>>> 出題1: text = ",text)
         Xactual = list(map(int, list(text)))
         print(">>>>>>>>>> 出題2: Xactual = ",text)
-        reply_text = "".join(["設定 X=",Xactual])
+        reply_text = "".join(["設定 X=",text])
     message = TextSendMessage(reply_text)
     line_bot_api.reply_message(event.reply_token, message)
 
