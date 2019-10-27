@@ -136,7 +136,7 @@ def handle_message(event):
         reply_text = openF1
     elif(text=="舉例"):
         X = np.random.choice(range(10),4,replace=False)
-        reply_text = ".join(X)
+        reply_text = ".join(map(str,X))
     elif(text=="開始"):
         reply_text = openF2
     else:  # 如果非以上的選項，就會學你說話
