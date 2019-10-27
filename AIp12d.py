@@ -171,7 +171,7 @@ def handle_message(event):
             reply_text = "".join(["設定 X=",text])
         except ValueError:
             Xstr = ''.join(map(str,Xactual))
-            reply_text = "".join([text, "現在的 X=",Xstr]) 
+            reply_text = "".join([text, "。 跟你說，現在的 X=",Xstr,"你可以試著'解題'看看..."]) 
     message = TextSendMessage(reply_text)
     line_bot_api.reply_message(event.reply_token, message)
 
