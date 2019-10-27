@@ -135,7 +135,7 @@ def handle_message(event):
         Xactual = np.random.choice(range(10),4,replace=False)
         reply_text = "".join(["X=",''.join(map(str,Xactual))])
     elif(text=="解題"):    
-        print(">>>>>>>>>> 解題1")
+        print(">>>>>>>>>> 解題1: Xactual = ",Xactual)
         #== (前4.4B) 產生所有可能解 (YY/YS) 與 確定題目 (Xactual) ==##
         NN = 4;   kk = 0;   answerF = "猜測過程："
         YY,YS = initialY(NN);   print("YY.shape = ",YY.shape)
