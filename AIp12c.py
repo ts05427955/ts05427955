@@ -124,7 +124,7 @@ def handle_message(event):
         reply_text = "5號麥香雞經典套餐$105\n推薦配冰紅茶"
     elif (text=="6" or text=="6號" or text=="麥克雞塊(6塊)" or text=="麥克雞塊(6塊)"):
         reply_text = "6號麥克雞塊(6塊)經典套餐$119\n推薦配雪碧"
-	elif (text=="外送"):
+    elif (text=="外送"):
 		reply_text = "https://www.mcdelivery.com.tw/tw/browse/menu.html?daypartId=45&catId=98"
     else:  # 如果非以上的選項，就會學你說話
         reply_text = text
