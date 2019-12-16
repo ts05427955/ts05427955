@@ -27,7 +27,7 @@
 #   ＋ QR code                                         ===> 用於加入群組
 
 from flask import Flask, request, abort
->>>>>>> bot1
+
 from linebot import (
     LineBotApi, WebhookHandler
 )
