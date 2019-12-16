@@ -1,7 +1,4 @@
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> c505cefacd435976f2cf7e993c5aca71a1a1423b
+
 # AIp12c.py: AI practices - 12 > program c: a Chatbot example
 # Jia-Sheng Heh, 10/26/2019, revised from bot1.py
 
@@ -23,17 +20,12 @@
 # —> Messaging API —-> Create new channel —-> Selected Provider:
 #    + App icon + App name + App description + Category/Subcategory —-> Create
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> c505cefacd435976f2cf7e993c5aca71a1a1423b
+
 ###=== (3.3) 機器人訊息 ===###  
 # LINE Developer —> Provider List —-> 選擇機器人 —-> Channel settings 
 #   + Channel Secret 密碼* + Channel Access Token 密碼* ===> 用於webhook程式 (5.3)
 #   ＋ QR code                                         ===> 用於加入群組
-<<<<<<< HEAD
-=======
-=======
+
 from flask import Flask, request, abort
 >>>>>>> bot1
 from linebot import (
@@ -43,9 +35,6 @@ from linebot.exceptions import(
     InvalidSignatureError
 )
 from line.models import *
->>>>>>> aip12c_bot1
-=======
->>>>>>> c505cefacd435976f2cf7e993c5aca71a1a1423b
 
 #####===== (4) 結合VScode/Flask/Git/Heroku建立網頁 =====#####
 ###=== (4.1) 建立新應用 ===###  
@@ -100,15 +89,13 @@ def callback():
     print(">>>>>>>>> 4.testing-body:"+body)
     # handle webhook body
     try:
-<<<<<<< HEAD
-<<<<<<< HEAD
+
         print(">>>>>>>>> 5.testing-try:...")
-=======
+
         print(">>>>>>>>> testing-1...")
->>>>>>> bot1
-=======
+
         print(">>>>>>>>> 5.testing-try:...")
->>>>>>> c505cefacd435976f2cf7e993c5aca71a1a1423b
+
         handler.handle(body, signature)
     except InvalidSignatureError:
         abort(400)
