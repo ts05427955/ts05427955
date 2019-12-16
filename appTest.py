@@ -1,6 +1,9 @@
+<<<<<<< HEAD
 # AIp12a.py: AI practices - 12 > program a: a test program for gitHub and Heroku
 # Jia-Sheng Heh, 10/21/2019, revised from AIp11c.py
 
+=======
+>>>>>>> heroku1_aip12x
 from flask import Flask
 app=Flask(__name__)  # __name__ 代表目前執行的模組
 
@@ -13,6 +16,7 @@ def test():
     return "This is Test"
 
 if __name__=="__main__":  # 如果以上程式執行
+<<<<<<< HEAD
     app.run()   # 立刻啟動伺服器
 
 #################### AIp12a.py ####################
@@ -120,3 +124,6 @@ if __name__=="__main__":  # 如果以上程式執行
 # $ rm -f .git   // 清除 git 必要的話
 
 # --> 部署的網址： https://aip12x.herokuapp.com/   
+=======
+    app.run()   # 立刻啟動伺服器
+>>>>>>> heroku1_aip12x

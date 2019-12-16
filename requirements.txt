@@ -1,5 +1,8 @@
 Flask
+<<<<<<< HEAD
 sys
 numpy
 pandas
+=======
+>>>>>>> heroku1_aip12x
 gunicorn
