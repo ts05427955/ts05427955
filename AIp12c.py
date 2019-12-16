@@ -112,9 +112,9 @@ def handle_message(event):
         #Your user ID
     elif(text=="你好"): 
         reply_text = "Hello"
-    elif (text=="1" | text=="1號" | text=="大麥克" | text=="我要大麥克"):
+    elif (text=="1" or text=="1號" or text=="大麥克" or text=="我要大麥克"):
         reply_text = "經典套餐$135\n 推薦配可樂"
-    elif (text=="2" | text=="2號" | text=="雙層牛肉吉事堡" | text=="我要雙層牛肉吉事堡"):
+    elif (text=="2" or text=="2號" or text=="雙層牛肉吉事堡" or text=="我要雙層牛肉吉事堡"):
         reply_text = "經典套餐$135"
     else:  # 如果非以上的選項，就會學你說話
         reply_text = text
