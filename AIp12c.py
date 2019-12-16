@@ -28,12 +28,8 @@
 
 from flask import Flask, request, abort
 
-from linebot import (
-    LineBotApi, WebhookHandler
-)
-from linebot.exceptions import(
-    InvalidSignatureError
-)
+from linebot import ( LineBotApi, WebhookHandler )
+from linebot.exceptions import( InvalidSignatureError)
 from line.models import *
 
 #####===== (4) 結合VScode/Flask/Git/Heroku建立網頁 =====#####
@@ -73,9 +69,9 @@ app = Flask(__name__)  # __name__ 代表目前執行的模組
 
 ###=== (5.3) LINE介面密碼 ===### (參考3.3)
 ##== (1) Channel Access Token
-line_bot_api = LineBotApi("Nr6mCIsNGslpKJagqwGXYLetpQx0UF2bfmvDAupvFIMmZ/ntSDWrVcRAPOI+OUeklrEWYaU96foNY0rOD+4wXNNPkvAKVGdFbXkcu3r9fblG+zBFT7dx4wjhXksPINOC4G3q6XffuRn/WDIJXoXNEQdB04t89/1O/w1cDnyilFU=")  #-- YOUR_CHANNEL_ACCESS_TOKEN
+line_bot_api = LineBotApi("PVb/QHEaYx1MSey+pdre2bJgBHs9P7xH7xHvzDXUE1MPHZBnoOJZcLo61E7tECc+P1lmNu2dYVvJgX3RGSiEQsvGJlN8dlf5mYHPned7jYudTsfDwci2IsP6XM1elkM9jCBwU46KxDNpdSo0KdeKWAdB04t89/1O/w1cDnyilFU=")  #-- YOUR_CHANNEL_ACCESS_TOKEN
 ##== (2) Channel Secret
-handler = WebhookHandler("48f6b1096e13a1d04269785c75363a8c")  #-- YOUR_CHANNEL_SECRET
+handler = WebhookHandler("956bff77a5287d475d2dab8b0897f5bf")  #-- YOUR_CHANNEL_SECRET
 
 ###=== (5.4) 監聽來自 /callback 的 Post Request  ===###
 @app.route("/callback", methods=['POST']) 
