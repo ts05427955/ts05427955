@@ -113,9 +113,19 @@ def handle_message(event):
     elif(text=="你好"): 
         reply_text = "Hello"
     elif (text=="1" or text=="1號" or text=="大麥克" or text=="我要大麥克"):
-        reply_text = "經典套餐$135\n 推薦配可樂"
+        reply_text = "1號大麥克經典套餐$135\n推薦配可樂"
     elif (text=="2" or text=="2號" or text=="雙層牛肉吉事堡" or text=="我要雙層牛肉吉事堡"):
-        reply_text = "經典套餐$135"
+        reply_text = "2號雙層牛肉吉事堡經典套餐$125\n推薦配柳橙汁"
+    elif (text=="3" or text=="3號" or text=="安格斯黑牛堡" or text=="我要安格斯黑牛堡"):
+        reply_text = "3號安格斯黑牛堡經典套餐$149\n推薦配奶茶"
+    elif (text=="4" or text=="4號" or text=="嫩煎雞腿堡" or text=="我要嫩煎雞腿堡"):
+        reply_text = "4號嫩煎雞腿堡經典套餐$135\n推薦配咖啡"
+    elif (text=="5" or text=="5號" or text=="麥香雞" or text=="我要麥香雞"):
+        reply_text = "5號麥香雞經典套餐$105\n推薦配冰紅茶"
+    elif (text=="6" or text=="6號" or text=="麥克雞塊(6塊)" or text=="麥克雞塊(6塊)"):
+        reply_text = "6號麥克雞塊(6塊)經典套餐$119\n推薦配雪碧"
+	elif (text=="外送"):
+		reply_text = "https://www.mcdelivery.com.tw/tw/browse/menu.html?daypartId=45&catId=98"
     else:  # 如果非以上的選項，就會學你說話
         reply_text = text
     message = TextSendMessage(reply_text)
