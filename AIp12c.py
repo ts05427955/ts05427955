@@ -71,7 +71,7 @@ app = Flask(__name__)  # __name__ 代表目前執行的模組
 ##== (1) Channel Access Token
 line_bot_api = LineBotApi("PVb/QHEaYx1MSey+pdre2bJgBHs9P7xH7xHvzDXUE1MPHZBnoOJZcLo61E7tECc+P1lmNu2dYVvJgX3RGSiEQsvGJlN8dlf5mYHPned7jYudTsfDwci2IsP6XM1elkM9jCBwU46KxDNpdSo0KdeKWAdB04t89/1O/w1cDnyilFU=")  #-- YOUR_CHANNEL_ACCESS_TOKEN
 ##== (2) Channel Secret
-handler = WebhookHandler("956bff77a5287d475d2dab8b0897f5bf")  #-- YOUR_CHANNEL_SECRET
+handler = WebhookHandler("13bb559d72a78209d8e02fadd0476a56")  #-- YOUR_CHANNEL_SECRET
 
 ###=== (5.4) 監聽來自 /callback 的 Post Request  ===###
 @app.route("/callback", methods=['POST']) 
