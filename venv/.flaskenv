@@ -1,1 +1,1 @@
-FLASK_APP=AIp12c.py
+FLASK_APP=AIp12b.py
