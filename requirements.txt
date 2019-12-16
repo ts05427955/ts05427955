@@ -1,9 +1,2 @@
-<<<<<<< HEAD
 Flask
-=======
-flask
-line-bot-sdk
-numpy
-pandas
->>>>>>> bot1
 gunicorn
