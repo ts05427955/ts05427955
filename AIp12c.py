@@ -30,7 +30,7 @@ from flask import Flask, request, abort
 
 from linebot import ( LineBotApi, WebhookHandler )
 from linebot.exceptions import( InvalidSignatureError)
-from line.models import *
+from linebot.models import *
 
 #####===== (4) 結合VScode/Flask/Git/Heroku建立網頁 =====#####
 ###=== (4.1) 建立新應用 ===###  
