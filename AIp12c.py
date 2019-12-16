@@ -69,7 +69,7 @@ app = Flask(__name__)  # __name__ 代表目前執行的模組
 
 ###=== (5.3) LINE介面密碼 ===### (參考3.3)
 ##== (1) Channel Access Token
-line_bot_api = LineBotApi("j6VfCKrQu455m8XnxYsb7ah8+rYuwHQ6G3UNjctKARCrp9fNqQb6F1qnb2Eb1dcqP1lmNu2dYVvJgX3RGSiEQsvGJlN8dlf5mYHPned7jYvHWtRm/K9mYaHA7guxdEfc2DHx5Qkh1gdBvLhpH//kxAdB04t89/1O/w1cDnyilFU=")  #-- YOUR_CHANNEL_ACCESS_TOKEN
+line_bot_api = LineBotApi("5h3Bwg3Wi7/3f0U+ef5bBdfCeCElpVuVOZfrWKPU5iMwZn9LnBwxDxBevNPBdHcnP1lmNu2dYVvJgX3RGSiEQsvGJlN8dlf5mYHPned7jYvjTZkYaoz4/mkdw0R9LXZuv5oFFfjoT4Pc9KaJL1PfcwdB04t89/1O/w1cDnyilFU=")  #-- YOUR_CHANNEL_ACCESS_TOKEN
 ##== (2) Channel Secret
 handler = WebhookHandler("13bb559d72a78209d8e02fadd0476a56")  #-- YOUR_CHANNEL_SECRET
 
