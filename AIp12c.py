@@ -108,12 +108,14 @@ def handle_message(event):
     if text == "100001":
         return
     if (text=="Hi"):
-        reply_text = "Hello"
+        reply_text = "要點餐推薦嗎"
         #Your user ID
     elif(text=="你好"): 
-        reply_text = "你好啊..."
-    elif(text=="機器人"):
-        reply_text = "有！我是機器人，在！"
+        reply_text = "Hello"
+    elif (text=="1" | text=="1號" | text=="大麥克" | text=="我要大麥克"):
+        reply_text = "經典套餐$135\n 推薦配可樂"
+    elif (text=="2" | text=="2號" | text=="雙層牛肉吉事堡" | text=="我要雙層牛肉吉事堡"):
+        reply_text = "經典套餐$135"
     else:  # 如果非以上的選項，就會學你說話
         reply_text = text
     message = TextSendMessage(reply_text)
