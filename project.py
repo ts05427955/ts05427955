@@ -41,7 +41,7 @@ def handle_message(event):
     print(event)
 	
     for index in range(6):
-		img[index] = cv2.imread('mc_picture'+str(index)+'.jpg')
+      img[index] = cv2.imread('mc_picture'+str(index)+'.jpg')
 		
     if event.message.id == "100001":
         return
