@@ -3,7 +3,7 @@ from linebot import ( LineBotApi, WebhookHandler )
 from linebot.exceptions import( InvalidSignatureError )
 from linebot.models import *
 import numpy as np 
-import opencv as cv2
+import cv2
 
 app = Flask(__name__)  # __name__ 代表目前執行的模組
 

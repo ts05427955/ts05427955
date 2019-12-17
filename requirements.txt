@@ -2,4 +2,4 @@ Flask
 gunicorn
 line-bot-sdk
 numpy
-opencv
+opencv-python
