@@ -1,2 +1,2 @@
-web gunicorn AIp12c:app
+web gunicorn project:app
 
