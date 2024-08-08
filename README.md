@@ -1,4 +1,4 @@
-### Hi there 👋
+### Welcome to my GitHub! I'm a Software Developer with a passion for building efficient and scalable applications. I have experience in various programming languages and technologies, and I’m always eager to learn and take on new challenges. 👋
 
 <!--
 **ts05427955/ts05427955** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
